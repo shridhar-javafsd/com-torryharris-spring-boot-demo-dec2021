@@ -25,7 +25,6 @@ public class EmployeeController {
 		System.out.println("emp");
 		int eid = 101;
 		return employeeService.getEmployeeById(eid);
-
 	}
 
 	@GetMapping("/emplist")
