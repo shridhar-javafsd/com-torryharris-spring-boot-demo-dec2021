@@ -38,13 +38,13 @@ public class EmployeeService {
 
 	public Employee updateEmployee(Employee emp) {
 		System.out.println("updateEmployee");
-//		empList.add(emp);
+//		empList.add(emp); // dummy code 
 		return emp;
 	}
 
 	public Employee deleteEmployee(int eid) {
-		System.out.println("deleteEmployee");
-//		empList.add(emp);
+		System.out.println("deleteEmployee " + eid);
+//		empList.add(emp); // dummy code 
 		return null;
 	}
 }
