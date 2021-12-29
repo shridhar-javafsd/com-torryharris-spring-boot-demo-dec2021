@@ -29,4 +29,11 @@ public class EmployeeService {
 		System.out.println("getEmployeeById");
 		return empList.get(0);
 	}
+
+	public Employee addEmployee(Employee emp) {
+		System.out.println("addEmployee");
+		empList.add(emp);
+		return emp;
+	}
+
 }
