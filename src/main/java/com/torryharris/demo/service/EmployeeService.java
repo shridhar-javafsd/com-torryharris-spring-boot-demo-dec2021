@@ -3,8 +3,11 @@ package com.torryharris.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.torryharris.demo.model.Employee;
 
+@Service
 public class EmployeeService {
 
 	public List<Employee> empList = new ArrayList<>();
