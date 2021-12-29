@@ -9,5 +9,7 @@ import com.torryharris.demo.model.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+	
+	// more code later 
 
 }
