@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EmployeeController {
-	
+
 	@Autowired
 	private EmployeeService employeeService;
 
 	@GetMapping("/emp")
-	public Employee emp(int eid) {
+	public Employee emp() {
 		System.out.println("emp");
-		eid = 101;
+		int eid = 101;
 		return employeeService.getEmployeeById(eid);
 
 	}
