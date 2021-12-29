@@ -36,4 +36,15 @@ public class EmployeeService {
 		return emp;
 	}
 
+	public Employee updateEmployee(Employee emp) {
+		System.out.println("updateEmployee");
+//		empList.add(emp);
+		return emp;
+	}
+
+	public Employee deleteEmployee(int eid) {
+		System.out.println("deleteEmployee");
+//		empList.add(emp);
+		return null;
+	}
 }

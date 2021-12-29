@@ -31,11 +31,22 @@ public class EmployeeController {
 		return employeeService.getAllEmployees();
 	}
 
-	
 	@PostMapping("/addemp")
 	public Employee addEmp(@RequestBody Employee emp) {
 		System.out.println("addEmp");
 		return employeeService.addEmployee(emp);
 	}
 
+	@PostMapping("/updateemp")
+	public Employee updateEmp(@RequestBody Employee emp) {
+		System.out.println("updateEmp");
+		return employeeService.updateEmployee(emp);
+	}
+
+	@PostMapping("/deleteemp")
+	public Employee deleteEmp(int eid) {
+		System.out.println("deleteEmp");
+		return employeeService.deleteEmployee(eid);
+	}
 }
+
