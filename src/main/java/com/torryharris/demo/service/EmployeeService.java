@@ -1,6 +1,5 @@
 package com.torryharris.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +16,27 @@ public class EmployeeService {
 
 	public List<Employee> getAllEmployees() {
 		System.out.println("getAllEmployees");
-		return employeeRepository.findAll();
+		return employeeRepository.findAll(); // SELECT * FROM ...
 	}
 
 	public Employee getEmployeeById(int eid) {
 		System.out.println("getEmployeeById");
-		return employeeRepository.findById(eid).get();
+		return employeeRepository.findById(eid).get(); // SELECT * FROM ... WHERE ...
 	}
 
 	public Employee addEmployee(Employee emp) {
 		System.out.println("addEmployee");
-		return employeeRepository.save(emp);
+		return employeeRepository.save(emp); // INSERT INTO ...
 	}
 
 	public Employee updateEmployee(Employee emp) {
 		System.out.println("updateEmployee");
-//		empList.add(emp); // dummy code 
-		return emp;
+		return employeeRepository.save(emp); // UPDATE ...
 	}
 
 	public Employee deleteEmployee(int eid) {
 		System.out.println("deleteEmployee " + eid);
-//		empList.add(emp); // dummy code 
+		employeeRepository.deleteById(eid); // DELETE
 		return null;
 	}
 }

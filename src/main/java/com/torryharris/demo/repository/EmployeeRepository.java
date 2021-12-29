@@ -11,5 +11,6 @@ import com.torryharris.demo.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	// more code later
+	
 
 }
