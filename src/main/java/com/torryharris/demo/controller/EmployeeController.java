@@ -1,8 +1,8 @@
 package com.torryharris.demo.controller;
 
 import com.torryharris.demo.model.Employee;
+import com.torryharris.demo.service.EmployeeService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmployeeController {
 
+	private EmployeeService employeeService;
+
 	@GetMapping("/emp")
-	public Employee emp() {
-		Employee emp = new Employee(101, "Sonu", 10.5);
-		System.out.println(emp.toString());
-		return emp;
+	public Employee emp(int eid) {
+		System.out.println("emp");
+		eid = 101;
+		return employeeService.getEmployeeById(eid);
+
 	}
 
 	@GetMapping("/emplist")
 	public List<Employee> empList() {
-		List<Employee> empList = new ArrayList<>();
-		System.out.println(empList);
-		return empList;
+		System.out.println("empList");
+		return employeeService.getAllEmployees();
 	}
 
 }

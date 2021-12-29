@@ -18,10 +18,12 @@ public class EmployeeService {
 	}
 
 	public List<Employee> getAllEmployees() {
+		System.out.println("getAllEmployees");
 		return empList;
 	}
 
 	public Employee getEmployeeById(int eid) {
+		System.out.println("getEmployeeById");
 		return empList.get(0);
 	}
 }
