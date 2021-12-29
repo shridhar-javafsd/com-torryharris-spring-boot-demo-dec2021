@@ -12,4 +12,10 @@ public class Hello {
         return "Hello world!";
     }
 
+    @GetMapping("/hi")
+    public String hi() {
+        System.out.println("hi");
+        return "Hi!";
+    }
+    
 }
