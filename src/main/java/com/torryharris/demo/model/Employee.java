@@ -26,7 +26,7 @@ public class Employee {
 	private double salary;
 
 	@ManyToOne
-	@JoinColumn(name = "departmentId")
+	@JoinColumn(name = "departmentId", nullable = true)
 	private Department department;
 
 	public Employee() {

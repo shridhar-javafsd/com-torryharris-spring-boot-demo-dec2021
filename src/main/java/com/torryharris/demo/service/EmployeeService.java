@@ -49,10 +49,14 @@ public class EmployeeService {
 			if (departmentRepository.existsById(emp.getDepartment().getDepartmentId())) {
 				LOG.info("employee added successfully.");
 				return employeeRepository.save(emp); // INSERT INTO ...
+			} else {
+				LOG.warn("employee was not added because given department id does not exist.");
+				return null;
 			}
+		} else {
+			LOG.info("employee added successfully without department.");
+			return employeeRepository.save(emp); // INSERT INTO ...
 		}
-		LOG.warn("employee was not added because given department if does not exist.");
-		return null;
 	}
 
 	public Employee updateEmployee(Employee emp) {

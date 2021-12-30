@@ -67,3 +67,16 @@ public class EmployeeController {
 		return employeeService.deleteEmployee(eid);
 	}
 }
+
+
+
+// json object for /addemp method 
+
+//{
+//    "firstName": "Sunil",
+//    "salary": 2564578.0,
+//    "department": {
+//        "departmentId": 35
+//    }
+//}
+
