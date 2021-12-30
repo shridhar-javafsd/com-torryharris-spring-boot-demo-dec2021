@@ -37,6 +37,12 @@ public class EmployeeController {
 		return employeeService.getEmployeeByFirstName(firstName);
 	}
 
+	@GetMapping("/getempbycity/{city}")
+	public List<Employee> getEmpByCity(@PathVariable(name = "city") String city) {
+		LOG.info("getEmpByCity " + city);
+		return employeeService.getEmployeeByCity(city);
+	}
+
 	@GetMapping("/emplist")
 	public List<Employee> empList() {
 		LOG.info("empList");

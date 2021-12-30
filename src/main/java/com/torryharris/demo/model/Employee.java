@@ -1,5 +1,6 @@
 package com.torryharris.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,10 +16,13 @@ public class Employee {
 	@Id // primary key
 //	@GeneratedValue(strategy = GenerationType.IDENTITY) // value generated automatically 1, 2, 3, ...
 	@GeneratedValue(strategy = GenerationType.AUTO) // value generated automatically 1, 2, 3, ...
+	@Column(name = "employee_id")
 	private int employeeId;
 
+	@Column(name = "first_name")
 	private String firstName;
 
+	@Column(name = "salary")
 	private double salary;
 
 	@ManyToOne

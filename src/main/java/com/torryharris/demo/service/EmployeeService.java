@@ -34,6 +34,11 @@ public class EmployeeService {
 		return employeeRepository.findByFirstName(firstName); // SELECT * FROM ... WHERE ...
 	}
 
+	public List<Employee> getEmployeeByCity(String city) {
+		LOG.info("getEmployeeByCity");
+		return employeeRepository.findByDepartment_City(city); // SELECT * FROM ... WHERE ...
+	}
+
 	public Employee addEmployee(Employee emp) {
 		LOG.info("addEmployee");
 		return employeeRepository.save(emp); // INSERT INTO ...
