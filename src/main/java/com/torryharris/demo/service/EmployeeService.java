@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.torryharris.demo.model.Employee;
+import com.torryharris.demo.repository.DepartmentRepository;
 import com.torryharris.demo.repository.EmployeeRepository;
 
 @Service
@@ -15,6 +16,9 @@ public class EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
+
+	@Autowired
+	DepartmentRepository departmentRepository;
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
@@ -41,7 +45,14 @@ public class EmployeeService {
 
 	public Employee addEmployee(Employee emp) {
 		LOG.info("addEmployee");
-		return employeeRepository.save(emp); // INSERT INTO ...
+		if (emp.getDepartment() != null) {
+			if (departmentRepository.existsById(emp.getDepartment().getDepartmentId())) {
+				LOG.info("employee added successfully.");
+				return employeeRepository.save(emp); // INSERT INTO ...
+			}
+		}
+		LOG.warn("employee was not added because given department if does not exist.");
+		return null;
 	}
 
 	public Employee updateEmployee(Employee emp) {

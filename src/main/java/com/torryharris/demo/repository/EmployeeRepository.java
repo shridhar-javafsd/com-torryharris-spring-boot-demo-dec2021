@@ -21,8 +21,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	// more code later
 
 //	syntax: public abstract List<Object> findByFieldName(Type FieldName);
-
 	public abstract List<Employee> findByFirstName(String firstName);
+
+//	public abstract List<Employee> findByFirstNameIgonreCase(String firstName);
 	
 	
 //	Which employees work in the city 'Hyderabad'?
