@@ -22,9 +22,9 @@ public class Hello {
 		return "Hi! How are you?";
 	}
 
-	@GetMapping("/*")
-	public String page404() {
-		LOG.warn("page404");
-		return "The page you are looking for is not found.";
-	}
+//	@GetMapping("/*")
+//	public String page404() {
+//		LOG.warn("page404");
+//		return "The page you are looking for is not found.";
+//	}
 }
