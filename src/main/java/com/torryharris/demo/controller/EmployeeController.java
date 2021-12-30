@@ -22,6 +22,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
+//	private final Logger LOG = LoggerFactory.getLogger(EmployeeController.class);
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@GetMapping("/emp")
@@ -39,7 +40,7 @@ public class EmployeeController {
 
 	@PostMapping("/addemp")
 	public Employee addEmp(@RequestBody Employee emp) {
-		LOG.info("addEmp");
+		LOG.info("addEmp " + emp.toString());
 		return employeeService.addEmployee(emp);
 	}
 
