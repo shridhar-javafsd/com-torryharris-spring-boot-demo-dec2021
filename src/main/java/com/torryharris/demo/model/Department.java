@@ -12,8 +12,10 @@ public class Department {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int department_id;
-	private String department_name;
+	private int departmentId;
+	
+	private String departmentName;
+	
 	private String city;
 
 	public Department() {
@@ -22,31 +24,31 @@ public class Department {
 
 	public Department(String department_name, String city) {
 		super();
-		this.department_name = department_name;
+		this.departmentName = department_name;
 		this.city = city;
 	}
 
 	public Department(int department_id, String department_name, String city) {
 		super();
-		this.department_id = department_id;
-		this.department_name = department_name;
+		this.departmentId = department_id;
+		this.departmentName = department_name;
 		this.city = city;
 	}
 
-	public int getDepartment_id() {
-		return department_id;
+	public int getDepartmentId() {
+		return departmentId;
 	}
 
-	public void setDepartment_id(int department_id) {
-		this.department_id = department_id;
+	public void setDepartmentId(int department_id) {
+		this.departmentId = department_id;
 	}
 
-	public String getDepartment_name() {
-		return department_name;
+	public String getDepartmentName() {
+		return departmentName;
 	}
 
-	public void setDepartment_name(String department_name) {
-		this.department_name = department_name;
+	public void setDepartmentName(String department_name) {
+		this.departmentName = department_name;
 	}
 
 	public String getCity() {
@@ -59,7 +61,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [department_id=" + department_id + ", department_name=" + department_name + ", city=" + city
+		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName + ", city=" + city
 				+ "]";
 	}
 
