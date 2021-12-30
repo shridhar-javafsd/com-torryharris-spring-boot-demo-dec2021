@@ -2,6 +2,8 @@ package com.torryharris.demo.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,28 +16,30 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
 	public List<Employee> getAllEmployees() {
-		System.out.println("getAllEmployees");
+		LOG.info("getAllEmployees");
 		return employeeRepository.findAll(); // SELECT * FROM ...
 	}
 
 	public Employee getEmployeeById(int eid) {
-		System.out.println("getEmployeeById");
+		LOG.info("getEmployeeById");
 		return employeeRepository.findById(eid).get(); // SELECT * FROM ... WHERE ...
 	}
 
 	public Employee addEmployee(Employee emp) {
-		System.out.println("addEmployee");
+		LOG.info("addEmployee");
 		return employeeRepository.save(emp); // INSERT INTO ...
 	}
 
 	public Employee updateEmployee(Employee emp) {
-		System.out.println("updateEmployee");
+		LOG.info("updateEmployee");
 		return employeeRepository.save(emp); // UPDATE ...
 	}
 
 	public Employee deleteEmployee(int eid) {
-		System.out.println("deleteEmployee " + eid);
+		LOG.info("deleteEmployee " + eid);
 		employeeRepository.deleteById(eid); // DELETE
 		return null;
 	}
