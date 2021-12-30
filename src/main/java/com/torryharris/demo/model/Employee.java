@@ -1,6 +1,8 @@
 package com.torryharris.demo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,11 +10,12 @@ import javax.persistence.Table;
 @Table(name = "employee")
 public class Employee {
 
-	@Id // primary key 
+	@Id // primary key
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // value generated automatically 
 	private int employeeId;
 
 	private String firstName;
-	
+
 	private double salary;
 
 	public Employee() {
