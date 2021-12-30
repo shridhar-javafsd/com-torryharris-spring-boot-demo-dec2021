@@ -25,10 +25,9 @@ public class EmployeeController {
 //	private final Logger LOG = LoggerFactory.getLogger(EmployeeController.class);
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-	@GetMapping("/emp")
-	public Employee emp() {
-		LOG.info("emp");
-		int eid = 101;
+	@GetMapping("/getempbyid/{eid}")
+	public Employee getEmpById(@PathVariable(name = "eid") int eid) {
+		LOG.info("getEmpById " + eid);
 		return employeeService.getEmployeeById(eid);
 	}
 
