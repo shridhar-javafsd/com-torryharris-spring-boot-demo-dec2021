@@ -20,13 +20,18 @@ public class EmployeeService {
 
 	public List<Employee> getAllEmployees() {
 		LOG.info("getAllEmployees");
-		
+
 		return employeeRepository.findAll(); // SELECT * FROM ...
 	}
 
 	public Employee getEmployeeById(int eid) {
 		LOG.info("getEmployeeById");
 		return employeeRepository.findById(eid).get(); // SELECT * FROM ... WHERE ...
+	}
+
+	public List<Employee> getEmployeeByFirstName(String firstName) {
+		LOG.info("getEmployeeByFirstName");
+		return employeeRepository.findByFirstName(firstName); // SELECT * FROM ... WHERE ...
 	}
 
 	public Employee addEmployee(Employee emp) {
