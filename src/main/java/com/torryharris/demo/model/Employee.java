@@ -11,7 +11,8 @@ import javax.persistence.Table;
 public class Employee {
 
 	@Id // primary key
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // value generated automatically 
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) // value generated automatically 1, 2, 3, ...
+	@GeneratedValue(strategy = GenerationType.AUTO) // value generated automatically 1, 2, 3, ...
 	private int employeeId;
 
 	private String firstName;
@@ -20,6 +21,12 @@ public class Employee {
 
 	public Employee() {
 		super();
+	}
+
+	public Employee(String firstName, double salary) {
+		super();
+		this.firstName = firstName;
+		this.salary = salary;
 	}
 
 	public Employee(int employeeId, String firstName, double salary) {
