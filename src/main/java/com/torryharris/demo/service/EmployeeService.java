@@ -48,33 +48,27 @@ public class EmployeeService {
 	public Employee addEmployee(Employee emp) {
 		LOG.info("addEmployee");
 		if (!employeeRepository.existsById(emp.getEmployeeId())) {
-			if (emp.getDepartment() != null && departmentRepository.existsById(emp.getDepartment().getDepartmentId())) // modify
-																														// to
-																														// add
-																														// null
+			if (emp.getDepartment() == null) {
 				return employeeRepository.save(emp);
-//			else if (departmentRepository.existsById(emp.getDepartment().getDepartmentId()))
-//				return employeeRepository.save(emp);
-			else
+			} else if (departmentRepository.existsById(emp.getDepartment().getDepartmentId())) {
+				return employeeRepository.save(emp);
+			} else {
 				throw new DepartmentNotFoundException();
-		} else
+			}
+		} else {
 			throw new EmployeeAlreadyExistsException();
+		}
 	}
 
 //	public Employee addEmployee(Employee emp) {
 //		LOG.info("addEmployee");
-//		if (emp.getDepartment() != null) {
-//			if (departmentRepository.existsById(emp.getDepartment().getDepartmentId())) {
-//				LOG.info("employee added successfully.");
-//				return employeeRepository.save(emp); // INSERT INTO ...
-//			} else {
-//				LOG.warn("employee was not added because given department id does not exist.");
-//				return null;
-//			}
-//		} else {
-//			LOG.info("employee added successfully without department.");
-//			return employeeRepository.save(emp); // INSERT INTO ...
-//		}
+//		if (!employeeRepository.existsById(emp.getEmployeeId())) {
+//			if (emp.getDepartment() != null && departmentRepository.existsById(emp.getDepartment().getDepartmentId())) 
+//				return employeeRepository.save(emp);
+//			else
+//				throw new DepartmentNotFoundException();
+//		} else
+//			throw new EmployeeAlreadyExistsException();
 //	}
 
 	public Employee updateEmployee(Employee emp) {
