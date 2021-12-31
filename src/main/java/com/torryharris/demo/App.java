@@ -11,7 +11,7 @@ public class App {
 	private static final Logger LOG = LoggerFactory.getLogger(App.class);
 
 	public static void main(String[] args) {
-//		System.out.println("Start"); // Not applicable 
+//		System.out.println("Start"); 
 		LOG.info("Start");
 		SpringApplication.run(App.class, args);
 		LOG.info("End");
