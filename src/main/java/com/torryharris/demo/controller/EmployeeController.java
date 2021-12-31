@@ -29,9 +29,9 @@ public class EmployeeController {
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	@GetMapping("/getempbyid/{eid}")
-	public Employee getEmpById(@PathVariable(name = "eid") int eid) {
+	public ResponseEntity<Employee> getEmpById(@PathVariable(name = "eid") int eid) {
 		LOG.info("getEmpById " + eid);
-		return employeeService.getEmployeeById(eid);
+		return new ResponseEntity<Employee>(employeeService.getEmployeeById(eid), HttpStatus.OK);
 	}
 
 	@GetMapping("/getempbyfirstname/{firstname}")
@@ -57,7 +57,7 @@ public class EmployeeController {
 		LOG.info("addEmp " + emp.toString());
 		Employee empTemp = employeeService.addEmployee(emp);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("message", "Employee added successfully."); // more can be added 
+		headers.add("message", "Employee added successfully."); // more can be added
 		HttpStatus status = HttpStatus.CREATED;
 		return new ResponseEntity<Employee>(empTemp, headers, status);
 	}

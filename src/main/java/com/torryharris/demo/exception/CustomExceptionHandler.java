@@ -32,7 +32,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> handleEmployeeNotFoundException() {
 		LOG.error("handleEmployeeNotFoundException");
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("message", "This Employee does not exist.");
+		headers.add("message", "This employee does not exist.");
 		return new ResponseEntity<Object>(null, headers, HttpStatus.NOT_FOUND);
 	}
 

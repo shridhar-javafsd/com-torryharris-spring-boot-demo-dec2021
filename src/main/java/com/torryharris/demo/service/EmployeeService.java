@@ -1,6 +1,7 @@
 package com.torryharris.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.torryharris.demo.exception.DepartmentNotFoundException;
 import com.torryharris.demo.exception.EmployeeAlreadyExistsException;
+import com.torryharris.demo.exception.EmployeeNotFoundException;
 import com.torryharris.demo.model.Employee;
 import com.torryharris.demo.repository.DepartmentRepository;
 import com.torryharris.demo.repository.EmployeeRepository;
@@ -32,7 +34,10 @@ public class EmployeeService {
 
 	public Employee getEmployeeById(int eid) {
 		LOG.info("getEmployeeById");
-		return employeeRepository.findById(eid).get(); // SELECT * FROM ... WHERE ...
+		Optional<Employee> empOptional = employeeRepository.findById(eid);
+		if (empOptional.isPresent())
+			return empOptional.get();
+		throw new EmployeeNotFoundException();
 	}
 
 	public List<Employee> getEmployeeByFirstName(String firstName) {
