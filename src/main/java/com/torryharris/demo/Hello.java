@@ -11,7 +11,7 @@ public class Hello {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-//	@RequestMapping("/hello")
+//	@RequestMapping("/hello") // this is not recommended 
 	@GetMapping("/hello")
 	public String hello() {
 		LOG.info("hello");
