@@ -55,12 +55,10 @@ public class EmployeeController {
 	@PostMapping("/addemp")
 	public ResponseEntity<Employee> addEmp(@RequestBody Employee emp) {
 		LOG.info("addEmp " + emp.toString());
-
 		Employee empTemp = employeeService.addEmployee(emp);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("message", "Employee added successfully.");
+		headers.add("message", "Employee added successfully."); // more can be added 
 		HttpStatus status = HttpStatus.CREATED;
-
 		return new ResponseEntity<Employee>(empTemp, headers, status);
 	}
 

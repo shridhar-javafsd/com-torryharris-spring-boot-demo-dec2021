@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.torryharris.demo.exception.DepartmentNotFoundException;
+import com.torryharris.demo.exception.EmployeeAlreadyExistsException;
 import com.torryharris.demo.model.Employee;
 import com.torryharris.demo.repository.DepartmentRepository;
 import com.torryharris.demo.repository.EmployeeRepository;
@@ -45,19 +47,35 @@ public class EmployeeService {
 
 	public Employee addEmployee(Employee emp) {
 		LOG.info("addEmployee");
-		if (emp.getDepartment() != null) {
-			if (departmentRepository.existsById(emp.getDepartment().getDepartmentId())) {
-				LOG.info("employee added successfully.");
-				return employeeRepository.save(emp); // INSERT INTO ...
-			} else {
-				LOG.warn("employee was not added because given department id does not exist.");
-				return null;
-			}
-		} else {
-			LOG.info("employee added successfully without department.");
-			return employeeRepository.save(emp); // INSERT INTO ...
-		}
+		if (!employeeRepository.existsById(emp.getEmployeeId())) {
+			if (emp.getDepartment() != null && departmentRepository.existsById(emp.getDepartment().getDepartmentId())) // modify
+																														// to
+																														// add
+																														// null
+				return employeeRepository.save(emp);
+//			else if (departmentRepository.existsById(emp.getDepartment().getDepartmentId()))
+//				return employeeRepository.save(emp);
+			else
+				throw new DepartmentNotFoundException();
+		} else
+			throw new EmployeeAlreadyExistsException();
 	}
+
+//	public Employee addEmployee(Employee emp) {
+//		LOG.info("addEmployee");
+//		if (emp.getDepartment() != null) {
+//			if (departmentRepository.existsById(emp.getDepartment().getDepartmentId())) {
+//				LOG.info("employee added successfully.");
+//				return employeeRepository.save(emp); // INSERT INTO ...
+//			} else {
+//				LOG.warn("employee was not added because given department id does not exist.");
+//				return null;
+//			}
+//		} else {
+//			LOG.info("employee added successfully without department.");
+//			return employeeRepository.save(emp); // INSERT INTO ...
+//		}
+//	}
 
 	public Employee updateEmployee(Employee emp) {
 		LOG.info("updateEmployee");
@@ -70,10 +88,6 @@ public class EmployeeService {
 		return null;
 	}
 }
-
-
-
-
 
 //package com.torryharris.demo.service;
 //
@@ -147,10 +161,6 @@ public class EmployeeService {
 //		return null;
 //	}
 //}
-
-
-
-
 
 //package com.torryharris.demo.service;
 //
