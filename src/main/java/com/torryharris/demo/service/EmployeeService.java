@@ -71,6 +71,87 @@ public class EmployeeService {
 	}
 }
 
+
+
+
+
+//package com.torryharris.demo.service;
+//
+//import java.util.List;
+//
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import com.torryharris.demo.model.Employee;
+//import com.torryharris.demo.repository.DepartmentRepository;
+//import com.torryharris.demo.repository.EmployeeRepository;
+//
+//@Service
+//public class EmployeeService {
+//
+//	@Autowired
+//	EmployeeRepository employeeRepository;
+//
+//	@Autowired
+//	DepartmentRepository departmentRepository;
+//
+//	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+//
+//	public List<Employee> getAllEmployees() {
+//		LOG.info("getAllEmployees");
+//
+//		return employeeRepository.findAll(); // SELECT * FROM ...
+//	}
+//
+//	public Employee getEmployeeById(int eid) {
+//		LOG.info("getEmployeeById");
+//		return employeeRepository.findById(eid).get(); // SELECT * FROM ... WHERE ...
+//	}
+//
+//	public List<Employee> getEmployeeByFirstName(String firstName) {
+//		LOG.info("getEmployeeByFirstName");
+//		return employeeRepository.findByFirstName(firstName); // SELECT * FROM ... WHERE ...
+//	}
+//
+//	public List<Employee> getEmployeeByCity(String city) {
+//		LOG.info("getEmployeeByCity");
+//		return employeeRepository.findByDepartment_City(city); // SELECT * FROM ... WHERE ...
+//	}
+//
+//	public Employee addEmployee(Employee emp) {
+//		LOG.info("addEmployee");
+//		if (emp.getDepartment() != null) {
+//			if (departmentRepository.existsById(emp.getDepartment().getDepartmentId())) {
+//				LOG.info("employee added successfully.");
+//				return employeeRepository.save(emp); // INSERT INTO ...
+//			} else {
+//				LOG.warn("employee was not added because given department id does not exist.");
+//				return null;
+//			}
+//		} else {
+//			LOG.info("employee added successfully without department.");
+//			return employeeRepository.save(emp); // INSERT INTO ...
+//		}
+//	}
+//
+//	public Employee updateEmployee(Employee emp) {
+//		LOG.info("updateEmployee");
+//		return employeeRepository.save(emp); // UPDATE ...
+//	}
+//
+//	public Employee deleteEmployee(int eid) {
+//		LOG.info("deleteEmployee " + eid);
+//		employeeRepository.deleteById(eid); // DELETE
+//		return null;
+//	}
+//}
+
+
+
+
+
 //package com.torryharris.demo.service;
 //
 //import java.util.ArrayList;
