@@ -28,4 +28,20 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<Object>(null, headers, HttpStatus.NOT_FOUND);
 	}
 
+	@ExceptionHandler(EmployeeNotFoundException.class)
+	public ResponseEntity<Object> handleEmployeeNotFoundException() {
+		LOG.error("handleEmployeeNotFoundException");
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "This Employee does not exist.");
+		return new ResponseEntity<Object>(null, headers, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(EmployeeAlreadyExistsException.class)
+	public ResponseEntity<Object> handleEmployeeAlreadyException() {
+		LOG.error("handleEmployeeAlreadyException");
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "This employee already exists.");
+		return new ResponseEntity<Object>(null, headers, HttpStatus.BAD_REQUEST);
+	}
+
 }
