@@ -17,15 +17,17 @@ import com.torryharris.demo.model.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-
+	
+	public abstract List<Employee> findByDepartment_departmentId(int department_id);
+	
+	public abstract List<Employee> findByDepartment_departmentName(String departmentName);
 	// more code later
 
 //	syntax: public abstract List<Object> findByFieldName(Type FieldName);
 	public abstract List<Employee> findByFirstName(String firstName);
 
 //	public abstract List<Employee> findByFirstNameIgonreCase(String firstName);
-	
-	
+		
 //	Which employees work in the city 'Hyderabad'?
 	public abstract List<Employee> findByDepartment_City(String city);
 			
