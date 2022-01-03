@@ -8,7 +8,10 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -35,23 +38,42 @@ public class EmployeeServiceTests {
 
 	private static List<Employee> empList;
 
-	@BeforeAll
+	@BeforeAll // always static
 	public static void createEmpData() {
+		LOG.info("createEmpData");
 		empList = new ArrayList<>();
 		empList.add(new Employee(101, "Sonu", 25000, new Department(10)));
 		empList.add(new Employee(102, "Monu", 35000, new Department(20)));
 		empList.add(new Employee(103, "Tonu", 30000, new Department(20)));
 	}
 
-	@Test
+	@AfterAll // always static
+	public static void removeEmpData() {
+		LOG.info("removeEmpData");
+		empList = null;
+	}
+
+	@BeforeEach // always non static
+	public void beforeEachTestCase() {
+		LOG.info("beforeEachTestCase");
+	}
+
+	@AfterEach // always non static
+	public void afterEachTestCase() {
+		LOG.info("afterEachTestCase");
+	}
+
+	@Test // always non static
 	public void testGetAllEmployees() {
+		LOG.info("testGetAllEmployees");
 		when(repository.findAll()).thenReturn(empList);
 		assertEquals(3, service.getAllEmployees().size());
 		verify(repository, times(1)).findAll();
 	}
 
-	@Test
+	@Test // always non static
 	public void testGetAllEmployeesTimes() {
+		LOG.info("testGetAllEmployeesTimes");
 		when(repository.findAll()).thenReturn(empList);
 		service.getAllEmployees();
 		service.getAllEmployees();
