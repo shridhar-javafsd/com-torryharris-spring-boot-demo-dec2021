@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +47,7 @@ public class EmployeeControllerTests {
 		empList.add(new Employee(103, "Tonu", 30000, new Department(20)));
 	}
 
+	@Test
 	public void testGetAllEmployees() throws Exception {
 		LOG.info("testGetAllEmployees");
 		when(service.getAllEmployees()).thenReturn(empList);
