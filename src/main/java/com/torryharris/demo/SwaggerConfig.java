@@ -28,7 +28,9 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().description("Spring boot depo app for Torry Harris trainees Dec 2021")
+		return new ApiInfoBuilder()
+				.title("Torry Harris REST API")
+				.description("Spring boot depo app for Torry Harris trainees Dec 2021")
 				.contact(new Contact("Torry Harris", "torryharris.com", "contact@torryharris.com"))
 				.license("Apache 2.0").version("1.0.0").build();
 	}
