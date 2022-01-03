@@ -1,6 +1,8 @@
 package com.torryharris.demo.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.torryharris.demo.model.Department;
 import com.torryharris.demo.model.Employee;
@@ -20,6 +24,8 @@ import com.torryharris.demo.service.EmployeeService;
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeeServiceTests {
+
+	private static final Logger LOG = LoggerFactory.getLogger(EmployeeServiceTests.class);
 
 	@InjectMocks
 	private EmployeeService service;
@@ -32,20 +38,38 @@ public class EmployeeServiceTests {
 	@BeforeAll
 	public static void createEmpData() {
 		empList = new ArrayList<>();
-		empList.add(new Employee("Sonu", 25000, new Department(10)));
-		empList.add(new Employee("Monu", 35000, new Department(20)));
-		empList.add(new Employee("Tonu", 30000, new Department(20)));
+		empList.add(new Employee(101, "Sonu", 25000, new Department(10)));
+		empList.add(new Employee(102, "Monu", 35000, new Department(20)));
+		empList.add(new Employee(103, "Tonu", 30000, new Department(20)));
 	}
 
 	@Test
 	public void testGetAllEmployees() {
-
 		when(repository.findAll()).thenReturn(empList);
-
-//		List<Employee> empList2 = service.getAllEmployees();
-
 		assertEquals(3, service.getAllEmployees().size());
-
+		verify(repository, times(1)).findAll();
 	}
 
+	@Test
+	public void testGetAllEmployeesTimes() {
+		when(repository.findAll()).thenReturn(empList);
+		service.getAllEmployees();
+		service.getAllEmployees();
+		service.getAllEmployees();
+		verify(repository, times(3)).findAll();
+	}
+
+//	@Test
+//	public void testGetEmployeeById() {
+//		when(repository.findById(102).get()).thenReturn(empList.get(1));
+//
+//		service.getEmployeeById(102);
+//		service.getEmployeeById(102);
+//		service.getEmployeeById(102);
+//
+//		verify(repository, times(3)).findById(102);
+//
+////		when(repository.findById(101).get()).thenReturn(empList.get(0));
+////		assertEquals(101, service.getEmployeeById(101).getEmployeeId());
+//	}
 }
