@@ -17,7 +17,6 @@ public class Department {
 	private String departmentName;
 
 	private String city;
-	
 
 	public Department() {
 		super();
@@ -34,6 +33,12 @@ public class Department {
 		this.departmentId = department_id;
 		this.departmentName = department_name;
 		this.city = city;
+	}
+
+	public Department(int departmentId) {
+		super();
+		this.departmentId = departmentId;
+
 	}
 
 	public int getDepartmentId() {
