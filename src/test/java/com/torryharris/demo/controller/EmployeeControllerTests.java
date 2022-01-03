@@ -2,11 +2,13 @@ package com.torryharris.demo.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -47,7 +49,9 @@ public class EmployeeControllerTests {
 	public void testGetAllEmployees() throws Exception {
 		LOG.info("testGetAllEmployees");
 		when(service.getAllEmployees()).thenReturn(empList);
-		mockMvc.perform(get("/emplist")).andExpect(status().isOk());
+		mockMvc.perform(get("/emplist"))
+		.andExpect(status().isOk())
+		.andExpect(jsonPath("$", Matchers.hasSize(3)));
 	}
 
 }
