@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+// TM Forum Standards 
+
 @RestController
+@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:8086/")
 public class EmployeeController {
 
 	@Autowired
@@ -28,12 +33,14 @@ public class EmployeeController {
 //	private final Logger LOG = LoggerFactory.getLogger(EmployeeController.class);
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
+//	@CrossOrigin(origins = "http://localhost:8086/")
 	@GetMapping("/getempbyid/{eid}")
 	public ResponseEntity<Employee> getEmpById(@PathVariable(name = "eid") int eid) {
 		LOG.info("getEmpById " + eid);
 		return new ResponseEntity<Employee>(employeeService.getEmployeeById(eid), HttpStatus.OK);
 	}
 
+//	@CrossOrigin(origins = "http://localhost:8086/")
 	@GetMapping("/getempbyfirstname/{firstname}")
 	public List<Employee> getEmpByFirstName(@PathVariable(name = "firstname") String firstName) {
 		LOG.info("getEmpById " + firstName);

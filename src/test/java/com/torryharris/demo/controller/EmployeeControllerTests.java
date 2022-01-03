@@ -2,13 +2,20 @@ package com.torryharris.demo.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 
-//Java - JUnit 
+import com.torryharris.demo.model.Employee;
+
+//Java - JUnit, Mockito  
 //JavaScript - jasmine 
 
 @SpringBootTest
@@ -19,6 +26,7 @@ public class EmployeeControllerTests {
 
 	@Autowired
 	private EmployeeController employeeController;
+
 
 	// positive test case
 	@Test
@@ -35,4 +43,12 @@ public class EmployeeControllerTests {
 		HttpStatus actual = employeeController.getEmpById(1).getStatusCode(); // 200
 		assertNotEquals(unexpected, actual);
 	}
+
+	@Test
+	public void testGetEmpByName() {
+		String expected = "Sonu";
+		String actual = employeeController.getEmpByFirstName("Sonu").get(0).getFirstName();
+		assertEquals(expected, actual);
+	}
+
 }
