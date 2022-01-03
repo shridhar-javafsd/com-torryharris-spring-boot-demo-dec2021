@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.exceptions.base.MockitoException;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.torryharris.demo.model.Department;
 import com.torryharris.demo.model.Employee;
 import com.torryharris.demo.repository.EmployeeRepository;
 import com.torryharris.demo.service.EmployeeService;
 
-@ExtendWith(MockitoException.class)
+@ExtendWith(MockitoExtension.class)
 public class EmployeeServiceTests {
 
 	@InjectMocks
