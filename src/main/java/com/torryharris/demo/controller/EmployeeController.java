@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 // TM Forum Standards 
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*")
 //@CrossOrigin(origins = "http://localhost:8086/")
+@RequestMapping("/emp")
 public class EmployeeController {
 
 	@Autowired
@@ -32,6 +34,12 @@ public class EmployeeController {
 
 //	private final Logger LOG = LoggerFactory.getLogger(EmployeeController.class);
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
+//	http://localhost:8082/emp/countOfMembers
+	@GetMapping("/countOfMembers")
+	public int countOfMembers() {
+		return 0;
+	}
 
 //	@CrossOrigin(origins = "http://localhost:8086/")
 	@GetMapping("/getempbyid/{eid}")

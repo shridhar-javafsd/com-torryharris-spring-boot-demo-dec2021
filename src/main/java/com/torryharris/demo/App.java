@@ -5,6 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 
+ * @author Vaman Deshmukh 
+ * @category Learning project 
+ *
+ */
+
 @SpringBootApplication
 public class App {
 
