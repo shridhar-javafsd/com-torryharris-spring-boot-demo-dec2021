@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-//@CrossOrigin(origins = "http://localhost:8086/")
 @RequestMapping("/emp")
 public class EmployeeController {
 
@@ -41,7 +40,7 @@ public class EmployeeController {
 		return 0;
 	}
 
-//	@CrossOrigin(origins = "http://localhost:8086/")
+//	@CrossOrigin(origins = "http://localhost:8082/")
 	@GetMapping("/getempbyid/{eid}")
 	public ResponseEntity<Employee> getEmpById(@PathVariable(name = "eid") int eid) {
 		LOG.info("getEmpById " + eid);
